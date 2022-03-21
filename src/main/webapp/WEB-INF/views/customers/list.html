@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout::head"></head>
+<body>
+    <div th:replace="/layout::header"></div>
+
+
+
+    <div class="content">
+       <p>
+           <a th:href="@{/customers/create}">
+               <button class="btn btn-primary">Tạo mới khách hàng</button></a>
+       </p>
+
+        <fieldset>
+            <legend><h4>DANH SÁCH KHÁCH HÀNG</h4></legend>
+            <table class="table table-striped">
+                <tr>
+                    <th>STT</th>
+                    <th>Mã khách hàng</th>
+                    <th>Tên</th>
+                    <th>Số điện thoại</th>
+                    <th>Email</th>
+                    <th>Địa chỉ</th>
+                    <th>THao tác</th>
+                </tr>
+                <tr th:each="c,cStatus : ${customers}">
+                    <td th:text="${cStatus.count}"></td>
+                    <td th:text="${c.id}"></td>
+                    <td><a th:href="@{/customers/view/__${c.id}__}" th:text="${c.name}"></a></td>
+                    <td th:text="${c.phone}"></td>
+                    <td th:text="${c.email}"></td>
+                    <td th:text="${c.address}"></td>
+                    <td>
+                        <a th:href="@{/customers/edit/__${c.id}__}">
+                            <button class="btn btn-primary">Edit</button></a>
+                        <a th:href="@{/customers/delete/__${c.id}__}">
+                            <button class="btn btn-danger">Delete</button></a>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+
+
+
+<div th:replace="/layout::footer"></div>
+</body>
+</html>

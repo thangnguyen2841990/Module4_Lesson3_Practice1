@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/layout::head"></head>
+<body>
+<div th:replace="/layout::header"></div>
+
+
+<div class="content">
+    <form th:object="${customer}" method="post">
+
+        <fieldset>
+            <legend><h3>SỬA THÔNG TIN KHÁCH HÀNG</h3></legend>
+            <div class="input-info">
+                <lable><h5>Mã khách hàng</h5></lable>
+                <input type="text" disabled th:field="*{id}" size="300">
+            </div>
+            <div class="input-info">
+                <lable><h5>Tên</h5></lable>
+                <input type="text" th:field="*{name}" size="300">
+            </div>
+            <div class="input-info">
+                <lable><h5>Số điện thoại</h5></lable>
+                <input type="text" th:field="*{phone}" size="300">
+            </div>
+            <div class="input-info">
+                <lable><h5>Email</h5></lable>
+                <input type="text" th:field="*{email}" size="300">
+            </div>
+            <div class="input-info">
+                <lable><h5>Địa chỉ</h5></lable>
+                <input type="text" th:field="*{address}" size="300">
+            </div>
+            <button class="btn btn-primary">Sửa</button>
+        </fieldset>
+    </form>
+
+</div>
+
+
+<div th:replace="/layout::footer"></div>
+</body>
+</html>
